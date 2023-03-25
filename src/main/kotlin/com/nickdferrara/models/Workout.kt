@@ -1,8 +1,5 @@
 package com.nickdferrara.models
 
-import kotlinx.serialization.Serializable
-
-@Serializable
 data class Workout(
     val id: Int,
     val location: Location,

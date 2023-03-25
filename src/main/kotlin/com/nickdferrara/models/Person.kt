@@ -1,11 +1,11 @@
 package com.nickdferrara.models
 
-import kotlinx.serialization.Serializable
+import org.bson.codecs.pojo.annotations.BsonId
+import org.litote.kmongo.Id
 
-@Serializable
 data class Person(
-    val id: Int,
+    @BsonId
+    val id: Id<Person>? = null,
     val firstName: String,
     val lastName: String,
-    val fullName: String = "$firstName $lastName"
 )

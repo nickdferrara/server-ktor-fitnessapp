@@ -1,8 +1,5 @@
 package com.nickdferrara.models
 
-import kotlinx.serialization.Serializable
-
-@Serializable
 data class Address(
     val id: Int,
     val street: String,
