@@ -5,6 +5,8 @@ import org.bson.types.ObjectId
 import org.litote.kmongo.Id
 import org.litote.kmongo.coroutine.CoroutineDatabase
 import org.litote.kmongo.coroutine.coroutine
+import org.litote.kmongo.eq
+import org.litote.kmongo.id.toId
 import org.litote.kmongo.reactivestreams.KMongo
 import org.litote.kmongo.reactivestreams.getCollection
 
@@ -21,4 +23,10 @@ class PersonService(
     suspend fun findAll(): List<Person> =
         personCollection.find()
             .toList()
+
+    suspend fun findById(id: String): Person? {
+        val bsonId: Id<Person> = ObjectId(id).toId()
+        return personCollection
+            .findOne(Person::id eq bsonId)
+    }
 }

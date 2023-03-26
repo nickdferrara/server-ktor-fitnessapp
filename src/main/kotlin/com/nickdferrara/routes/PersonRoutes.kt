@@ -35,5 +35,12 @@ fun Route.personRoutes(
                     .map(Person::toDto)
             call.respond(peopleList)
         }
+
+        get("/{id}") {
+            val id = call.parameters["id"].toString()
+            service.findById(id)
+                ?.let { foundPerson -> call.respond(foundPerson.toDto()) }
+                ?: call.respond(HttpStatusCode.NotFound, ErrorResponse.NOT_FOUND_RESPONSE)
+        }
     }
 }
