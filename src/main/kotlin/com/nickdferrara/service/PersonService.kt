@@ -17,4 +17,8 @@ class PersonService(
          personCollection.insertOne(person)
          return person.id
     }
+
+    suspend fun findAll(): List<Person> =
+        personCollection.find()
+            .toList()
 }
