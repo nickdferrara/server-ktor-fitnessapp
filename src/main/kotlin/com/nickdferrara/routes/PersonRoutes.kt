@@ -42,5 +42,31 @@ fun Route.personRoutes(
                 ?.let { foundPerson -> call.respond(foundPerson.toDto()) }
                 ?: call.respond(HttpStatusCode.NotFound, ErrorResponse.NOT_FOUND_RESPONSE)
         }
+
+        put("/{id}") {
+            val id = call.parameters["id"].toString()
+            val personRequest = call.receive<PersonDto>()
+            val person = personRequest.toPerson()
+
+            val updatedSuccessfully = service.updateById(id, person)
+
+            if (updatedSuccessfully) {
+                call.respond(HttpStatusCode.NoContent)
+            } else {
+                call.respond(HttpStatusCode.BadRequest, ErrorResponse.BAD_REQUEST_RESPONSE)
+            }
+        }
+
+        delete("/{id}") {
+            val id = call.parameters["id"].toString()
+
+            val deletedSuccessfully = service.deleteById(id)
+
+            if (deletedSuccessfully) {
+                call.respond(HttpStatusCode.NoContent)
+            } else {
+                call.respond(HttpStatusCode.NotFound, ErrorResponse.NOT_FOUND_RESPONSE)
+            }
+        }
     }
 }

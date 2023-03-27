@@ -10,8 +10,12 @@ fun Person.toDto(): PersonDto =
         lastName = this.lastName
     )
 
+fun Person.fullName(): String =
+    "${this.firstName} ${this.lastName}"
+
 fun PersonDto.toPerson(): Person =
     Person(
         firstName = this.firstName,
         lastName = this.lastName
     )
+
