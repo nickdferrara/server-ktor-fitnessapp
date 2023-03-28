@@ -7,4 +7,4 @@ data class PersonDto(
     val id: String? = null,
     val firstName: String,
     val lastName: String,
-)
+    )

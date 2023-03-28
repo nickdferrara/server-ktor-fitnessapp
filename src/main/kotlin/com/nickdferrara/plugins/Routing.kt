@@ -2,6 +2,7 @@ package com.nickdferrara.plugins
 
 import com.nickdferrara.routes.addressRoutes
 import com.nickdferrara.routes.credentialRoutes
+import com.nickdferrara.routes.membershipTypeRoutes
 import com.nickdferrara.routes.personRoutes
 import io.ktor.server.routing.*
 import io.ktor.server.http.content.*
@@ -15,6 +16,7 @@ fun Application.configureRouting(
         personRoutes(database)
         credentialRoutes(database)
         addressRoutes(database)
+        membershipTypeRoutes(database)
         static("/static") {
             resources("static")
         }
