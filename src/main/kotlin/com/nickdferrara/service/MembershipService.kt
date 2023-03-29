@@ -34,10 +34,17 @@ class MembershipService(
             ?.let { membership ->
                 val updateResult = membershipCollection.replaceOne(
                     membership.copy(
-                        //ToDo: Map object
+                        number = request.number,
+                        startDate = request.startDate,
+                        endDate = request.endDate,
+                        membershipType = request.membershipType
                     )
                 )
                 updateResult.modifiedCount == 1L
             } ?: false
 
+    suspend fun deleteById(id: String): Boolean {
+        val deleteResult = membershipCollection.deleteOneById(ObjectId(id))
+        return deleteResult.deletedCount == 1L
+    }
 }

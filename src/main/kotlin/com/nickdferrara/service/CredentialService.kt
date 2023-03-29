@@ -1,14 +1,13 @@
 package com.nickdferrara.service
 
 import com.nickdferrara.models.Credential
-import com.nickdferrara.models.Person
 import org.bson.types.ObjectId
 import org.litote.kmongo.Id
 import org.litote.kmongo.coroutine.CoroutineDatabase
 import org.litote.kmongo.coroutine.replaceOne
 import org.litote.kmongo.eq
 import org.litote.kmongo.id.toId
-import org.litote.kmongo.eq
+
 
 class CredentialService(
     database: CoroutineDatabase
