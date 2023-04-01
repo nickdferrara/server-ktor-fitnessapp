@@ -7,10 +7,10 @@ import org.litote.kmongo.coroutine.CoroutineDatabase
 class UserService(
     database: CoroutineDatabase
 ) {
-    private val usercollection = database.getCollection<User>()
+    private val userCollection = database.getCollection<User>()
 
     suspend fun create(user: User): Id<User>?  {
-        usercollection.insertOne(user)
+        userCollection.insertOne(user)
         return user.id
     }
 }

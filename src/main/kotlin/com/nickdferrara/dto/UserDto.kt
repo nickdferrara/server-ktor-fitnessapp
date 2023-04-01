@@ -12,5 +12,4 @@ data class UserDto(
     val address: AddressDto?,
     val membership: MembershipDto?,
     val profileImage: String?
-
 )
