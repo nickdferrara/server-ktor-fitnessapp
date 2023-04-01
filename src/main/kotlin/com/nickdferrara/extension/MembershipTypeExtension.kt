@@ -5,7 +5,6 @@ import com.nickdferrara.models.MembershipType
 
 fun MembershipType.toDto(): MembershipTypeDto =
     MembershipTypeDto(
-        id = this.id.toString(),
         description = this.description,
         isReoccuring = this.isReoccuring
     )

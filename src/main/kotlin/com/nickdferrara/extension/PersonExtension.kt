@@ -5,7 +5,6 @@ import com.nickdferrara.models.Person
 
 fun Person.toDto(): PersonDto =
     PersonDto(
-        id = this.id.toString(),
         firstName = this.firstName,
         lastName = this.lastName
     )

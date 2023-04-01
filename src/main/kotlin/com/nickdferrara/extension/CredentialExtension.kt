@@ -5,7 +5,6 @@ import com.nickdferrara.models.Credential
 
 fun Credential.toDto(): CredentialDto =
     CredentialDto(
-        id = this.id.toString(),
         email = this.email,
         password = this.password
     )

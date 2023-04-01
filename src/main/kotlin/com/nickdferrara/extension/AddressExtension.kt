@@ -5,7 +5,6 @@ import com.nickdferrara.models.Address
 
 fun Address.toDto(): AddressDto =
     AddressDto(
-        id = this.id.toString(),
         street = this.street,
         city = this.city,
         state = this.state,

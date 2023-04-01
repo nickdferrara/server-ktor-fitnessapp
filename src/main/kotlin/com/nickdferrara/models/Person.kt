@@ -5,7 +5,6 @@ import org.litote.kmongo.Id
 
 
 data class Person(
-    @BsonId val id: Id<Person>? = null,
     val firstName: String,
     val lastName: String,
 )

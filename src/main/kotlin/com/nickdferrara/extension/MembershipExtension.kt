@@ -5,7 +5,6 @@ import com.nickdferrara.models.Membership
 
 fun Membership.toDto(): MembershipDto =
     MembershipDto(
-        id = this.id.toString(),
         number = this.number,
         startDate = this.startDate,
         endDate = this.endDate,
