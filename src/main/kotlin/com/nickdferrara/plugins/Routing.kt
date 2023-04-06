@@ -12,6 +12,7 @@ fun Application.configureRouting(
     routing {
         userRoutes(database)
         coachRoutes(database)
+        workoutRoutes(database)
         static("/static") {
             resources("static")
         }
