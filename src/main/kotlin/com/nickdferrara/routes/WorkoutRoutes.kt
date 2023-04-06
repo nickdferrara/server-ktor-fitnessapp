@@ -19,9 +19,6 @@ fun Route.workoutRoutes(
 
     route("/workout") {
         post {
-            println("----------------------------------------------------------------------------------------------")
-            println(LocalDateTime.now())
-            println("----------------------------------------------------------------------------------------------")
             val request = call.receive<WorkoutDto>()
             val workout = request.toWorkout()
             service.create(workout)
