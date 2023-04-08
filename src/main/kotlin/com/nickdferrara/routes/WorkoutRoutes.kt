@@ -48,6 +48,14 @@ fun Route.workoutRoutes(
                     ErrorResponse.NOT_FOUND_RESPONSE)
         }
 
+        get("/getbyuser/{id}") {
+            val id = call.parameters["id"].toString()
+            service.findByUserId(id)
+                ?.let { foundWorkout -> call.respond(foundWorkout.toDto()) }
+                ?: call.respond(HttpStatusCode.NotFound,
+                    ErrorResponse.NOT_FOUND_RESPONSE)
+        }
+
         put("/{id}") {
             val id = call.parameters["id"].toString()
             val workoutRequest = call.receive<WorkoutDto>()

@@ -26,10 +26,7 @@ fun Route.userRoutes(
             val request = call.receive<UserDto>()
             val user = request.toUser()
             service.create(user)
-                ?.let { userId ->
-                    call.response.headers.append("My-User-Id-Header", userId.toString())
-                    call.respond(HttpStatusCode.Created)
-                } ?: call.respond(HttpStatusCode.BadRequest, ErrorResponse.BAD_REQUEST_RESPONSE)
+                ?.let { user -> call.respond(user.toDto()) }
         }
 
         get {

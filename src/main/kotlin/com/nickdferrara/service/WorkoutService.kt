@@ -1,6 +1,7 @@
 package com.nickdferrara.service
 
-import com.nickdferrara.models.Coach
+
+import com.mongodb.client.model.Filters.eq
 import com.nickdferrara.models.Workout
 import org.bson.types.ObjectId
 import org.litote.kmongo.Id
@@ -23,10 +24,16 @@ class WorkoutService(
         workoutCollection.find()
             .toList()
 
+
     suspend fun findById(id: String): Workout? {
         val bsonId: Id<Workout> = ObjectId(id).toId()
         return workoutCollection
             .findOne(Workout::id eq bsonId)
+    }
+
+    suspend fun findByUserId(id: String): Workout? {
+        return workoutCollection
+            .find(eq("roster._id", id)).first()
     }
 
     suspend fun updateById(id: String, request: Workout): Boolean =

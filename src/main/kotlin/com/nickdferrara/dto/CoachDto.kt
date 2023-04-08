@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class CoachDto(
-    val id: String? = null,
+    var _id: String? = null,
     val isActive: Boolean,
     val person: PersonDto,
     val credential: CredentialDto,

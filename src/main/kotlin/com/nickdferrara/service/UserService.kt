@@ -1,22 +1,22 @@
 package com.nickdferrara.service
 
 import com.nickdferrara.models.User
-import com.nickdferrara.models.Workout
 import org.bson.types.ObjectId
-import org.litote.kmongo.Id
 import org.litote.kmongo.coroutine.CoroutineDatabase
 import org.litote.kmongo.coroutine.replaceOne
 import org.litote.kmongo.eq
-import org.litote.kmongo.id.toId
+import java.util.*
+
 
 class UserService(
     database: CoroutineDatabase
 ) {
     private val userCollection = database.getCollection<User>()
 
-    suspend fun create(user: User): Id<User>?  {
+    suspend fun create(user: User): User  {
+        user._id = UUID.randomUUID().toString()
         userCollection.insertOne(user)
-        return user.id
+        return user
     }
 
     suspend fun findAll(): List<User> =
@@ -24,9 +24,8 @@ class UserService(
             .toList()
 
     suspend fun findById(id: String): User? {
-        val bsonId: Id<User> = ObjectId(id).toId()
         return userCollection
-            .findOne(User::id eq bsonId)
+            .findOne(User::_id eq id)
     }
 
     suspend fun updateById(id: String, request: User): Boolean =

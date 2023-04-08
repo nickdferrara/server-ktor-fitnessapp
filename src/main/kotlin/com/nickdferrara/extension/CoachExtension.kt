@@ -5,7 +5,7 @@ import com.nickdferrara.models.Coach
 
 fun Coach.toDto(): CoachDto =
     CoachDto(
-        id = this.id.toString(),
+        _id = this._id.toString(),
         person = this.person.toDto(),
         credential = this.credential.toDto(),
         address = this.address.toDto(),
@@ -15,6 +15,7 @@ fun Coach.toDto(): CoachDto =
 
 fun CoachDto.toCoach(): Coach =
     Coach(
+        _id = this._id,
         person = this.person.toPerson(),
         credential = this.credential.toCredential(),
         address = this.address.toAddress(),

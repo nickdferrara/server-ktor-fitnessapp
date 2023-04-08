@@ -8,15 +8,17 @@ import org.litote.kmongo.coroutine.CoroutineDatabase
 import org.litote.kmongo.coroutine.replaceOne
 import org.litote.kmongo.eq
 import org.litote.kmongo.id.toId
+import java.util.*
 
 class CoachService(
     database: CoroutineDatabase
 ) {
     private val coachCollection = database.getCollection<Coach>()
 
-    suspend fun create(coach: Coach): Id<Coach>?  {
+    suspend fun create(coach: Coach): Coach {
+        coach._id = UUID.randomUUID().toString()
         coachCollection.insertOne(coach)
-        return coach.id
+        return coach
     }
 
     suspend fun findAll(): List<Coach> =
@@ -24,9 +26,8 @@ class CoachService(
             .toList()
 
     suspend fun findById(id: String): Coach? {
-        val bsonId: Id<Coach> = ObjectId(id).toId()
         return coachCollection
-            .findOne(Coach::id eq bsonId)
+            .findOne(Coach::_id eq id)
     }
 
     suspend fun updateById(id: String, request: Coach): Boolean =
