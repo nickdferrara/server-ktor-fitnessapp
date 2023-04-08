@@ -12,4 +12,5 @@ fun Application.module() {
     configureMonitoring()
     configureSerialization()
     configureRouting(configureDatabase())
+    configurePayments()
 }

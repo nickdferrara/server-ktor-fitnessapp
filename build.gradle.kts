@@ -2,6 +2,7 @@ val ktor_version: String by project
 val kotlin_version: String by project
 val logback_version: String by project
 val kmongo_version: String by project
+val java_version: String by project
 
 plugins {
     kotlin("jvm") version "1.8.10"
@@ -39,4 +40,5 @@ dependencies {
     implementation("org.litote.kmongo:kmongo-async:$kmongo_version")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.2")
     implementation("org.litote.kmongo:kmongo-reactor:$kmongo_version")
+    implementation ("com.stripe:stripe-java:$java_version")
 }

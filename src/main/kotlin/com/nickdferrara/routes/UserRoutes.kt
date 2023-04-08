@@ -1,13 +1,10 @@
 package com.nickdferrara.routes
 
 import com.nickdferrara.dto.UserDto
-import com.nickdferrara.dto.WorkoutDto
 import com.nickdferrara.extension.toDto
 import com.nickdferrara.extension.toUser
-import com.nickdferrara.extension.toWorkout
 import com.nickdferrara.models.ErrorResponse
 import com.nickdferrara.models.User
-import com.nickdferrara.models.Workout
 import com.nickdferrara.service.UserService
 import io.ktor.http.*
 import io.ktor.server.application.*
