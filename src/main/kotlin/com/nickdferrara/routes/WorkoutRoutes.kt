@@ -27,10 +27,10 @@ fun Route.workoutRoutes(
             val request = call.receive<WorkoutDto>()
             val workout = request.toWorkout()
             service.create(workout)
-                ?.let { workoutId ->
-                    call.response.headers.append("My-User-Id-Header", workoutId.toString())
+                ?.let { workout ->
+                    call.respond(workout.toDto())
                     call.respond(HttpStatusCode.Created)
-                } ?: call.respond(HttpStatusCode.BadRequest, ErrorResponse.BAD_REQUEST_RESPONSE)
+                }
         }
 
         get {

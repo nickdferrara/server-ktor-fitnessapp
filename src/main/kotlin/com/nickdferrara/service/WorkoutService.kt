@@ -4,20 +4,20 @@ package com.nickdferrara.service
 import com.mongodb.client.model.Filters.eq
 import com.nickdferrara.models.Workout
 import org.bson.types.ObjectId
-import org.litote.kmongo.Id
 import org.litote.kmongo.coroutine.CoroutineDatabase
 import org.litote.kmongo.coroutine.replaceOne
 import org.litote.kmongo.eq
-import org.litote.kmongo.id.toId
+import java.util.*
 
 class WorkoutService(
     database: CoroutineDatabase
 ) {
     private val workoutCollection = database.getCollection<Workout>()
 
-    suspend fun create(workout: Workout): Id<Workout>?  {
+    suspend fun create(workout: Workout): Workout  {
+        workout._id = UUID.randomUUID().toString()
         workoutCollection.insertOne(workout)
-        return workout.id
+        return workout
     }
 
     suspend fun findAll(): List<Workout> =
@@ -26,9 +26,8 @@ class WorkoutService(
 
 
     suspend fun findById(id: String): Workout? {
-        val bsonId: Id<Workout> = ObjectId(id).toId()
         return workoutCollection
-            .findOne(Workout::id eq bsonId)
+            .findOne(Workout::_id eq id)
     }
 
     suspend fun findByUserId(id: String): Workout? {

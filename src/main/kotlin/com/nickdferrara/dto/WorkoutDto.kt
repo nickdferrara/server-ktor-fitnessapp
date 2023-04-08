@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class WorkoutDto(
-    val id: String? = null,
+    var _id: String? = null,
     val location: LocationDto,
     val description: String,
     val capacity: Int,

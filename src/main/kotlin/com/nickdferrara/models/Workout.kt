@@ -1,11 +1,9 @@
 package com.nickdferrara.models
 
-import org.bson.codecs.pojo.annotations.BsonId
-import org.litote.kmongo.Id
 import java.time.LocalDateTime
 
 data class Workout(
-    @BsonId val id: Id<Workout>? = null,
+    var _id: String? = null,
     val location: Location,
     val description: String,
     val capacity: Int,
