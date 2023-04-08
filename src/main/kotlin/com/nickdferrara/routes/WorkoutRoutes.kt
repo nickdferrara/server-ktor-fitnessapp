@@ -29,7 +29,6 @@ fun Route.workoutRoutes(
             service.create(workout)
                 ?.let { workout ->
                     call.respond(workout.toDto())
-                    call.respond(HttpStatusCode.Created)
                 }
         }
 

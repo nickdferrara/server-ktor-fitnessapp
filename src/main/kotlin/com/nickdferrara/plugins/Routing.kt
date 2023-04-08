@@ -13,6 +13,7 @@ fun Application.configureRouting(
         userRoutes(database)
         coachRoutes(database)
         workoutRoutes(database)
+        locationRoutes(database)
         static("/static") {
             resources("static")
         }
