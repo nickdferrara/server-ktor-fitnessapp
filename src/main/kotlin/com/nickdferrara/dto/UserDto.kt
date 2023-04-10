@@ -9,5 +9,6 @@ data class UserDto(
     val credential: CredentialDto,
     val address: AddressDto?,
     val membership: MembershipDto?,
-    val profileImage: String?
+    val profileImage: String?,
+    val role: String
 )

@@ -2,7 +2,6 @@ package com.nickdferrara.extension
 
 import com.nickdferrara.dto.UserDto
 import com.nickdferrara.models.User
-import org.litote.kmongo.Id
 
 fun User.toDto(): UserDto =
     UserDto(
@@ -11,7 +10,8 @@ fun User.toDto(): UserDto =
         credential = this.credential.toDto(),
         address = this.address?.toDto(),
         membership = this.membership?.toDto(),
-        profileImage = this.profileImage
+        profileImage = this.profileImage,
+        role = this.role
     )
 
 fun UserDto.toUser(): User =
@@ -21,5 +21,6 @@ fun UserDto.toUser(): User =
         credential = this.credential.toCredential(),
         address = this.address?.toAddress(),
         membership = this.membership?.toMembership(),
-        profileImage = this.profileImage
+        profileImage = this.profileImage,
+        role = this.role
     )
