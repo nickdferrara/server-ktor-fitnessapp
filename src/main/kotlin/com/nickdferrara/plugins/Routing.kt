@@ -15,6 +15,7 @@ fun Application.configureRouting(
         workoutRoutes(database)
         locationRoutes(database)
         productRoutes(database)
+        cartRoutes(database)
         paymentRoutes()
         static("/static") {
             resources("static")

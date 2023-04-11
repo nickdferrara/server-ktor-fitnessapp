@@ -8,7 +8,7 @@ import java.time.LocalDateTime
 
 fun Workout.toDto(): WorkoutDto =
     WorkoutDto(
-        _id = this._id.toString(),
+        _id = this._id,
         location = this.location.toDto(),
         description = this.description,
         capacity = this.capacity,
