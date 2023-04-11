@@ -14,6 +14,7 @@ fun Application.configureRouting(
         coachRoutes(database)
         workoutRoutes(database)
         locationRoutes(database)
+        productRoutes(database)
         paymentRoutes()
         static("/static") {
             resources("static")
